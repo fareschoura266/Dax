@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#2A1B17">
+    <meta name="description" content="Fiche de contact d'urgence de Dax, chat Siamois de Fares Choura">
+
+    <title>Dax 🐾 — Contact d'urgence</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+        :root {
+            --cream: #FDFBF7;
+            --cream-dark: #F5EFE8;
+
+            --chocolate: #2A1B17;
+            --brown: #5C3D2E;
+            --brown-light: #8A6756;
+
+            --blue: #3B82F6;
+            --blue-dark: #2563EB;
+            --blue-soft: rgba(59, 130, 246, 0.12);
+
+            --white-glass: rgba(255, 255, 255, 0.68);
+            --border-glass: rgba(255, 255, 255, 0.8);
+
+            --shadow: 0 20px 60px rgba(42, 27, 23, 0.12);
+            --shadow-small: 0 8px 25px rgba(42, 27, 23, 0.08);
+
+            --radius-xl: 30px;
+            --radius-lg: 22px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            color: var(--chocolate);
+            background:
+                radial-gradient(
+                    circle at 85% 5%,
+                    rgba(59, 130, 246, 0.12),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 5% 90%,
+                    rgba(92, 61, 46, 0.09),
+                    transparent 30%
+                ),
+                var(--cream);
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 24px 14px 40px;
+
+            overflow-x: hidden;
+        }
+
+        /* Decorative paws */
+
+        .paw {
+            position: fixed;
+            color: var(--brown);
+            opacity: 0.035;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .paw.one {
+            top: 8%;
+            left: 3%;
+            font-size: 90px;
+            transform: rotate(-25deg);
+        }
+
+        .paw.two {
+            bottom: 8%;
+            right: 2%;
+            font-size: 110px;
+            transform: rotate(20deg);
+        }
+
+        /* Main mobile card */
+
+        .contact-card {
+            width: 100%;
+            max-width: 470px;
+
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid var(--border-glass);
+
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Top decorative glow */
+
+        .contact-card::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            top: -120px;
+            right: -80px;
+
+            background: rgba(59, 130, 246, 0.14);
+            filter: blur(10px);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Header */
+
+        .profile-header {
+            padding: 30px 24px 22px;
+            text-align: center;
+        }
+
+        .owner-photo-wrapper {
+            width: 104px;
+            height: 104px;
+            margin: 0 auto 15px;
+
+            padding: 4px;
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--blue),
+                    var(--brown),
+                    var(--chocolate)
+                );
+
+            box-shadow:
+                0 10px 30px rgba(42, 27, 23, 0.18),
+                0 0 0 6px rgba(255, 255, 255, 0.55);
+        }
+
+        .owner-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            border: 3px solid var(--cream);
+        }
+
+        .owner-name {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--chocolate);
+        }
+
+        .owner-role {
+            margin-top: 5px;
+            color: var(--brown);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .owner-role i {
+            color: var(--blue);
+            margin-right: 4px;
+        }
+
+        /* Emergency block */
+
+        .emergency-card {
+            margin: 0 16px;
+            padding: 10px;
+
+            background: rgba(255, 255, 255, 0.76);
+            border: 1px solid rgba(92, 61, 46, 0.08);
+
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-small);
+        }
+
+        .dax-photo-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 17px;
+            position: relative;
+            background: var(--cream-dark);
+        }
+
+        .dax-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Image overlay */
+
+        .dax-photo-wrapper::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent 60%,
+                    rgba(42, 27, 23, 0.35)
+                );
+
+            pointer-events: none;
+        }
+
+        .dax-badge {
+            position: absolute;
+            z-index: 2;
+            top: 13px;
+            left: 13px;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 8px 12px;
+
+            color: white;
+            background: rgba(42, 27, 23, 0.75);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .dax-badge i {
+            color: #60A5FA;
+        }
+
+        /* Arabic message */
+
+        .emergency-message {
+            padding: 20px 10px 14px;
+            text-align: center;
+            direction: rtl;
+        }
+
+        .message-label {
+            direction: ltr;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+
+            margin-bottom: 10px;
+
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+
+            font-weight: 800;
+            color: var(--blue);
+        }
+
+        .message-label i {
+            font-size: 12px;
+        }
+
+        .arabic-text {
+            font-family: "Tahoma", "Arial", sans-serif;
+            font-size: 19px;
+            line-height: 1.8;
+            font-weight: 700;
+            color: var(--chocolate);
+        }
+
+        .arabic-text .dax-name {
+            color: var(--blue-dark);
+            white-space: nowrap;
+        }
+
+        /* Save contact */
+
+        .save-section {
+            padding: 20px 16px 8px;
+        }
+
+        .save-contact {
+            width: 100%;
+            min-height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            color: white;
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--chocolate),
+                    var(--brown)
+                );
+
+            text-decoration: none;
+
+            border-radius: var(--radius-md);
+
+            font-size: 14px;
+            font-weight: 800;
+
+            box-shadow:
+                0 12px 25px rgba(42, 27, 23, 0.18);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .save-contact i {
+            font-size: 18px;
+            color: #60A5FA;
+        }
+
+        .save-contact:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 16px 30px rgba(42, 27, 23, 0.23);
+        }
+
+        .save-contact:active {
+            transform: scale(0.98);
+        }
+
+        /* Contact links */
+
+        .contact-list {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            min-height: 60px;
+            padding: 8px 12px 8px 8px;
+
+            text-decoration: none;
+            color: var(--chocolate);
+
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(92, 61, 46, 0.07);
+
+            border-radius: var(--radius-md);
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(3px);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(59, 130, 246, 0.18);
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            color: var(--brown);
+            background: var(--blue-soft);
+
+            font-size: 18px;
+        }
+
+        .contact-info {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .contact-label {
+            display: block;
+
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+
+            color: var(--brown-light);
+            margin-bottom: 3px;
+        }
+
+        .contact-value {
+            display: block;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .arrow {
+            color: var(--brown-light);
+            font-size: 12px;
+            padding-right: 3px;
+        }
+
+        /* Individual icon colors */
+
+        .phone .contact-icon {
+            color: #2563EB;
+            background: rgba(59, 130, 246, 0.11);
+        }
+
+        .whatsapp .contact-icon {
+            color: #16A34A;
+            background: rgba(34, 197, 94, 0.10);
+        }
+
+        .facebook .contact-icon {
+            color: #1877F2;
+            background: rgba(24, 119, 242, 0.10);
+        }
+
+        .instagram .contact-icon {
+            color: #C13584;
+            background: rgba(193, 53, 132, 0.10);
+        }
+
+        .email .contact-icon {
+            color: var(--brown);
+            background: rgba(92, 61, 46, 0.09);
+        }
+
+        /* Footer */
+
+        .footer {
+            padding: 4px 20px 24px;
+            text-align: center;
+        }
+
+        .footer-paw {
+            color: var(--blue);
+            margin-right: 4px;
+            font-size: 11px;
+        }
+
+        .footer-text {
+            font-size: 10px;
+            color: var(--brown-light);
+            font-weight: 600;
+        }
+
+        /* Desktop */
+
+        @media (min-width: 600px) {
+            body {
+                padding: 40px 20px;
+            }
+
+            .contact-card {
+                max-width: 480px;
+            }
+
+            .profile-header {
+                padding-top: 34px;
+            }
+
+            .emergency-card {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .save-section,
+            .contact-list {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        /* Accessibility */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Decorative paws -->
+    <i class="fa-solid fa-paw paw one"></i>
+    <i class="fa-solid fa-paw paw two"></i>
+
+    <main class="contact-card">
+
+        <!-- =========================
+             HEADER / OWNER
+        ========================== -->
+        <header class="profile-header">
+
+            <div class="owner-photo-wrapper">
+                <img
+                    class="owner-photo"
+                    src="images\fares.jpg"
+                    alt="Photo de Fares Choura"
+                >
+            </div>
+
+            <h1 class="owner-name">
+                Fares Choura
+            </h1>
+
+            <p class="owner-role">
+                <i class="fa-solid fa-paw"></i>
+                Propriétaire de Dax
+            </p>
+
+        </header>
+
+
+        <!-- =========================
+             EMERGENCY / DAX
+        ========================== -->
+        <section class="emergency-card">
+
+            <div class="dax-photo-wrapper">
+
+                <span class="dax-badge">
+                    <i class="fa-solid fa-cat"></i>
+                    DAX • SIAMOIS
+                </span>
+
+                <img
+                    class="dax-photo"
+                    src="images\dax.jpeg"
+                    alt="Dax, chat Siamois"
+                >
+
+            </div>
+
+            <div class="emergency-message">
+
+                <div class="message-label">
+                    <i class="fa-solid fa-heart"></i>
+                    Message important
+                </div>
+
+                <p class="arabic-text">
+                    كان لقيت القطوس هذا أمان رجعو لمولاه،
+                    <span class="dax-name">Dax</span>
+                    مستحق عائلتو!
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SAVE CONTACT
+        ========================== -->
+        <div class="save-section">
+
+            <a
+                href="contact.vcf"
+                download="Fares_Choura.vcf"
+                class="save-contact"
+            >
+                <i class="fa-solid fa-address-card"></i>
+                <span>Enregistrer le contact</span>
+            </a>
+
+        </div>
+
+
+        <!-- =========================
+             CONTACT LINKS
+        ========================== -->
+        <section class="contact-list">
+
+            <!-- Phone -->
+            <a
+                href="tel:+21627859001"
+                class="contact-item phone"
+                aria-label="Appeler Fares Choura"
+            >
+                <span class="contact-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </span>
+
+                <span class="contact-info">
+                    <span class="contact-label">Téléphone</span>
+                    <span class="contact-value">
+                        +216 27 859 001
+                    </span>
+                </span>
+
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+
+            <!-- WhatsApp -->
+            <a
+                href="https://wa.me/21627859001"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-item whatsapp"
+                aria-label="Contacter Fares sur WhatsApp"
+            >
+                <span class="contact-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </span>
+
+                <span class="contact-info">
+                    <span class="contact-label">WhatsApp</span>
+                    <span class="contact-value">
+                        +216 27 859 001
+                    </span>
+                </span>
+
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+
+            <!-- Facebook -->
+            <a
+                href="https://www.facebook.com/feres.choura/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-item facebook"
+                aria-label="Facebook de Feres Choura"
+            >
+                <span class="contact-icon">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </span>
+
+                <span class="contact-info">
+                    <span class="contact-label">Facebook</span>
+                    <span class="contact-value">
+                        Feres Choura
+                    </span>
+                </span>
+
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+
+            <!-- Instagram -->
+            <a
+                href="https://www.instagram.com/fares_choura/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-item instagram"
+                aria-label="Instagram de Fares Choura"
+            >
+                <span class="contact-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </span>
+
+                <span class="contact-info">
+                    <span class="contact-label">Instagram</span>
+                    <span class="contact-value">
+                        @fares_choura
+                    </span>
+                </span>
+
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+
+            <!-- Email -->
+            <a
+                href="mailto:fareschoura8@gmail.com"
+                class="contact-item email"
+                aria-label="Envoyer un email à Fares Choura"
+            >
+                <span class="contact-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </span>
+
+                <span class="contact-info">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">
+                        fareschoura8@gmail.com
+                    </span>
+                </span>
+
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+        <footer class="footer">
+
+            <p class="footer-text">
+                <i class="fa-solid fa-paw footer-paw"></i>
+                Merci de prendre soin de Dax
+            </p>
+
+        </footer>
+
+    </main>
+
+</body>
+</html>
